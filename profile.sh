@@ -2,7 +2,7 @@
 
 set -o functrace
 
-file_to_profile="$(realpath $1)"
+file_to_profile="$1"
 profile_log="$file_to_profile.profile"
 separator="$2"
 sortseparator='$'
