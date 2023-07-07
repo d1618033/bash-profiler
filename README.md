@@ -7,7 +7,7 @@ Bash slow? Not any more!
 
 ```
 # move into the directory of your script
-./profile.sh your_script separator
+./profile.sh your_script separator [script args]
 ```
 
 `separator` is a character that you are sure doesn't appear in your bash script (e.g '%%%')

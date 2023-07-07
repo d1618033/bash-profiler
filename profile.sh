@@ -5,6 +5,7 @@ set -o functrace
 file_to_profile="$1"
 profile_log="$file_to_profile.profile"
 separator="$2"
+shift 2
 sortseparator='$'
 
 function profile_before() {
@@ -17,7 +18,7 @@ function profile_before() {
 
 truncate -s 0 "$profile_log"
 trap 'profile_before "$BASH_SOURCE" $LINENO' DEBUG
-. $file_to_profile 2>&1 1> /dev/null
+. $file_to_profile $@ 2>&1 1> /dev/null
 trap - DEBUG
 awk -v sortsep="$sortseparator" -v sep="$separator" -F "$separator" '
     NR == 2{profiled_start_time = $1; profiled_filename = $2; profiled_linenumber = $3; profiled_command = $4; next}
