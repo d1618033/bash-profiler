@@ -24,14 +24,14 @@ awk -v sortsep="$sortseparator" -v sep="$separator" -F "$separator" '
     NR == 2{profiled_start_time = $1; profiled_filename = $2; profiled_linenumber = $3; profiled_command = $4; next}
     NR > 2 {
       line_run_time = ($1 - profiled_start_time)/1000.0; 
-      total_time["file=" profiled_filename sep "lineno=" profiled_linenumber sep "cmd=" profiled_command] += line_run_time;
+      total_time[profiled_filename sep profiled_linenumber sep profiled_command] += line_run_time;
       profiled_start_time = $1; profiled_filename = $2; profiled_linenumber = $3; profiled_command = $4; 
     }
     END {
       for (key in total_time) print total_time[key] sortsep key 
     }
 ' "$profile_log" | sort -r -t "$sortseparator" -nk1 > "$profile_log.tmp"
-awk -F "$sortseparator" -v sep="$separator" '{print "total_time=" $1 sep $2}' "$profile_log.tmp" > "$profile_log"
+awk -F "$sortseparator" -v sep="$separator" '{print $1 sep $2}' "$profile_log.tmp" > "$profile_log"
 rm "$profile_log.tmp"
 cat "$profile_log"
 rm "$profile_log"

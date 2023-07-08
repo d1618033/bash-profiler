@@ -20,16 +20,15 @@ the script will use this character as a separator in the output table
 
 ```
 $ cd examples
-$ ../profile.sh example.sh ','
-
-total_time=2.499,file=example.sh,lineno=4,cmd=sleep 0.2
-total_time=1.049,file=other_script.sh,lineno=2,cmd=sleep 1
-total_time=0.543,file=example.sh,lineno=3,cmd=sleep 0.5
-total_time=0.156,file=example.sh,lineno=4,cmd=for i in 
-total_time=0.026,file=example.sh,lineno=4,cmd=seq 1 10
-total_time=0.016,file=example.sh,lineno=5,cmd=my_func
-total_time=0.015,file=example.sh,lineno=2,cmd=. other_script.sh
-total_time=0.014,file=other_script.sh,lineno=1,cmd=my_func
+$ ../profile.sh example.sh ,
+2.054,example.sh,4,sleep 0.2
+1.005,other_script.sh,2,sleep 1
+0.507,example.sh,3,sleep 0.5
+0.03,example.sh,4,for i in
+0.007,example.sh,4,seq 1 10
+0.003,example.sh,5,my_func
+0.003,example.sh,2,. other_script.sh
+0.002,other_script.sh,1,my_func
 ```
 
 ### Func Profiler
@@ -46,7 +45,7 @@ the script will use the character "," as a separator
 ```
 $ cd examples
 $ ../func-profile.sh func_example.sh
-
-total_time=0.617,file=func_example.sh,funcname=func1
-total_time=0.512,file=func_example.sh,funcname=func2
+main,1.132,
+func2,0.821,0.512
+func1,0.62,0.62
 ```
