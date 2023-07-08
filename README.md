@@ -9,7 +9,7 @@ Bash slow? Not any more!
 
 ```
 # move into the directory of your script
-./profile.sh your_script separator [script args]
+./line-profile.sh your_script separator [script args]
 ```
 
 `separator` is a character that you are sure doesn't appear in your bash script (e.g '%%%')
@@ -20,7 +20,7 @@ the script will use this character as a separator in the output table
 
 ```
 $ cd examples
-$ ../profile.sh example.sh ,
+$ ../line-profile.sh example.sh ,
 2.054,example.sh,4,sleep 0.2
 1.005,other_script.sh,2,sleep 1
 0.507,example.sh,3,sleep 0.5

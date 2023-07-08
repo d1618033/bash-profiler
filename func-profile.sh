@@ -42,11 +42,11 @@ awk -v sep="$separator" -F "$separator" '
     cumulative_time[$2] += $1
   }
   END {
-    for (func in total_time) {
-      if (func == "source") {
+    for (funcname in total_time) {
+      if (funcname == "source") {
         continue
       }
-      print func sep total_time[func] sep cumulative_time[func]
+      print funcname sep total_time[funcname] sep cumulative_time[funcname]
     }
   }
 ' "$profile_log.tmp" | sort -r -t"$separator" -nk2 > "$profile_log"
