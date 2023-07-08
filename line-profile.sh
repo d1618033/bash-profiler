@@ -34,4 +34,3 @@ awk -v sortsep="$sortseparator" -v sep="$separator" -F "$separator" '
 awk -F "$sortseparator" -v sep="$separator" '{print $1 sep $2}' "$profile_log.tmp" > "$profile_log"
 rm "$profile_log.tmp"
 cat "$profile_log"
-rm "$profile_log"
